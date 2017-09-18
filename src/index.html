@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app = "moduleApp">
   <head>
     <meta charset="utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <!-- Referencia al archivo donde esta el codigo js del controlador -->
+    <script src="Controllers/MainController.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
@@ -60,7 +64,7 @@
 							<input class="form-control" type="text">
 						</div>
 						<button type="submit" class="btn btn-default">
-							Submit
+							Buscar
 						</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
@@ -173,7 +177,127 @@
 				<a class="btn" href="#">View details »</a>
 			</p>
 		</div>
-	</div>
+
+</div>
+<div class="row">
+  <!-- inicia renglon dos con cuatro columnas -->
+  <div class="col-md-8" ng-controller="Control">
+    <h2 color = "green">Evaluacion </h2>
+   <section>
+     <ul class="nav nav-pills">
+       <li > <a href ng-click = "tab = 1"> Evalua la pagina </a> </li>
+       <li > <a href ng-click = "tab = 2"> Evalua a Sineti </a></li>
+     </ul>
+     <blockquote ng-repeat = "comentario in comentarios">
+
+       Estrellas  : {{comentario.estrellas}}<br/>
+       Comentario : {{comentario.texto}} <br/>
+       Usuario    : {{comentario.usuario}} <br/>
+       Seccion    : {{comentario.seccion}}<br/>
+      </blockquote>
+      <cite>Deja tu un comentario</cite>
+
+
+<!-- ***************************************************************************************-->
+     <div class="panel" ng-show= "tab === 2" >
+       <form ng-controller="Control as control" ng-submint="control.agregarComentario()">
+         <h3 > Sineti	</h3>
+         <div class="form-group">
+             <label for="sel1">Evaluar</label>
+             <select class="form-control" ng-model="control.estrellasView">
+               <option>1 estrella</option>
+               <option>2 estrellas</option>
+               <option>3 estrellas</option>
+               <option>4 estrellas</option>
+               <option>5 estrellas</option>
+             </select>
+            </div>
+            <br/>
+         <div class="form-group">
+ 					<label for="comentario">			Comentario			</label>
+ 					<input placeholder="Deja un comentario" class="form-control" type="text" ng-model="control.textoView">
+          <label for="usuario">						Usuario 					</label>
+          <input class="form-control" placeholder="usuario@gmail.com" type="text" ng-model="control.usuarioView">
+ 				</div><br/>
+        <center>
+         <button type="submit" class="btn btn-default" >			Enviar			</button>
+      </center>
+       </form>
+     </div>
+
+
+
+
+     <div class="panel" ng-show= "tab === 1">
+       <form name="reviewSineti">
+         <h3 > Pagina </h3>
+         <select ng-model="estrellas">
+           <option value="1" >1 estrella</option>
+           <option value="2" >2 estrellas</option>
+           <option value="3" >3 estrellas</option>
+           <option value="4" >4 estrellas</option>
+           <option value="5" >5 estrellas</option>
+         </select> <br/>
+         <div class="form-group">
+
+ 					<label for="comentario">Comentario</label>
+ 					<input class="form-control" id="comentario" type="text" ng-model="texto">
+ 				</div><br/>
+         <button type="submit" class="btn btn-default" ng-click="agregarComentario()">
+ 					Enviar
+ 				</button>
+       </form>
+     </div>
+
+   </section>
+
+  </div>
+  <!-- Inicia renglon dos con cuatro columnas-->
+  <center>
+      <div class="col-md-4" ng-controller="Control">
+  			<h2 color = "green">
+  				Industrias
+  			</h2>
+        <ul>
+           <li ng-repeat="libro in libros">
+               {{libro.titulo}}
+               <p> Lugares disponibles : {{libro.autor}}</p>
+               <p> : {{libro.autor}}</p>
+               Licencias disponibles :
+               <select ng-model="licencias">
+                 <option value="1" >1 </option>
+                 <option value="2" >2 </option>
+                 <option value="3" >3 </option>
+                 <option value="4" >4 </option>
+                 <option value="5" >5 </option>
+               </select> <br/>
+               Total : {{licencias}}
+           </li>
+       </ul>
+       <section>
+         <ul class="nav nav-pills" >
+           <li > <a href ng-click = "tab = 1"> Descripcion </a> </li>
+           <li > <a href ng-click = "tab = 2"> Costos </a></li>
+           <li > <a href ng-click = "tab = 3"> Ventajas </a></li>
+         </ul>
+
+       </section>
+       <div class="panel" ng-show= "tab === 1" >
+         <h2> Descripcion </h2>
+         <h3> No disponible </h3>
+  		</div>
+      <div class="panel" ng-show= "tab === 2">
+        <h2> Costos </h2>
+        <h3> No disponible</h3>
+     </div>
+     <div class="panel" ng-show= "tab === 3">
+       <h2> Ventajas </h2>
+       <h3> Ir a la seccion de ventjas en la barra principal </h3>
+    </div>
+    </center>
+  	</div>
+    <!-- Acaba renglon dos con cuatro columnas-->
+
 </div>
 
     <script src="js/jquery.min.js"></script>
