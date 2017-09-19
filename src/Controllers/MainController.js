@@ -1,5 +1,5 @@
-angular.module('moduleApp', [])
-.controller('Control', function ($scope,$http) {
+angular.module('moduleApp', ["LocalStorageModule"])
+.controller('Control', function ($scope,$http,localStorageService) {
 
     $scope.posts = [];
     $scope.nuevoPost = {};
@@ -27,14 +27,20 @@ angular.module('moduleApp', [])
         {'titulo': 'Cuidado personal ', 'autor': 'Mexico, Guatemala, Peru, Canada', licencias : 15}
     ];
 
+    if(localStorageService.get("angular-todoList")){
+        $scope.comentarios = localStorageService.get("angular-todoList");
+    }else{
+        $scope.comentarios = [
+            {estrellas : 5,texto : "Me encanta" , usuario : "jesus.elef@gmail.com"},
+            {estrellas : 3,texto : "Parece bien" , usuario : "usuarioNoRegistrado"}
+        ];
+    }
     $scope.nuevoComentario = {};
-    $scope.comentarios = [
-        {estrellas : 5,texto : "Me encanta" , usuario : "jesus.elef@gmail.com"},
-        {estrellas : 3,texto : "Parece bien" , usuario : "usuarioNoRegistrado"}
-    ];
+
     $scope.agregarComentario = function() {
       $scope.comentarios.push($scope.nuevoComentario);
       $scope.nuevoComentario = {};
+      localStorageService.set("angular-todoList",$scope.comentarios);
 };
 
 
