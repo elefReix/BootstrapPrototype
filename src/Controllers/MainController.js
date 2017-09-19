@@ -1,6 +1,12 @@
 angular.module('moduleApp', ["LocalStorageModule"])
 .controller('Control', function ($scope,$http,localStorageService) {
 
+    $scope.ejemploDigest = "Local Storage";
+    setTimeout(function(){
+      $scope.ejemploDigest = "Local Storage funciona";
+      $scope.$apply();
+    },700);
+
     $scope.posts = [];
     $scope.nuevoPost = {};
 

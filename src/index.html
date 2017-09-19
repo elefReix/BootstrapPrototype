@@ -10,7 +10,7 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
      $(function(){
-    	 $("body").hide().fadeIn(5000);
+    	 $("body").hide().fadeIn(400);
     	 });
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -320,11 +320,12 @@
         </center>
   	</div>
     <div class="row">
-      <div class="col-md-6" ng-controller="Control">
+      <div class="col-md-6" >
       <center>
-        <h2 color = "green">
-          Local storage
+        <h2 color = "green" ng-controller="Control">
+          {{ejemploDigest}}
         </h2>
+
       </center>
 
 
