@@ -1,9 +1,9 @@
 angular.module('moduleApp', ["LocalStorageModule"])
 .controller('Control', function ($scope,$http,localStorageService) {
 
-    $scope.ejemploDigest = "Repositorios";
+    $scope.ejemploDigest = "Local Storage";
     setTimeout(function(){
-      $scope.ejemploDigest = "Mis Repositorios";
+      $scope.ejemploDigest = "Local Storage funciona";
       $scope.$apply();
     },8000);
 
@@ -15,14 +15,6 @@ angular.module('moduleApp', ["LocalStorageModule"])
             $scope.posts = datos.data;
            }, function(error){
            });
-
-
-           $scope.repos = [];
-           $http.get("https://api.github.com/users/elefReix/repos")
-                 .then(function(datos){
-                   $scope.repos = datos.data;
-                  }, function(error){
-                  });
 
     $scope.agergaPost = function () {
     $http.post("http://jsonplaceholder.typicode.com/posts",

@@ -10,7 +10,7 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
      $(function(){
-    	 $("body").hide().fadeIn(400);
+    	 $("body").hide().fadeIn(5000);
     	 });
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -145,9 +145,9 @@
 
 				</div>
         <center>
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-default" ng-mouseover= "bandera = true" ng-mouseout = "bandera = false">
 					Login
-				</button>
+				</button> <span ng-show = "bandera"> Logeate</span>
         </center>
 			</form>
 
@@ -320,14 +320,29 @@
         </center>
   	</div>
     <div class="row">
-      <div class="col-md-6" >
+      <div class="col-md-4" ng-controller="Control as controlito">
       <center>
-        <h2 color = "green" ng-controller="Control">
+        <h2 color = "green" >
+          Mi avatar
+        </h2>
+        <img src="{{repos[0].owner.avatar_url}}">
+      </center>
+    </div>
+      <div class="col-md-8" ng-controller="Control">
+      <center>
+        <h2 color = "green" >
           {{ejemploDigest}}
         </h2>
+        <img src="{{repo.owner.avatar_url}}">
+        <ul>
+          <li ng-repeat="repo in repos">
 
-      </center>
+            {{repo.name}}<br/>
+            {{repo.full_name}}<br/>
+            {{repo.login}}<br/>
+          </li>
 
+        </ul>
 
       </center>
   </div>
