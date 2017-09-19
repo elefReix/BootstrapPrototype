@@ -181,30 +181,16 @@
 </div>
 <div class="row">
   <!-- inicia renglon dos con cuatro columnas -->
-  <div class="col-md-8" ng-controller="Control">
-    <h2 color = "green">Evaluacion </h2>
-   <section>
-     <ul class="nav nav-pills">
-       <li > <a href ng-click = "tab = 1"> Evalua la pagina </a> </li>
-       <li > <a href ng-click = "tab = 2"> Evalua a Sineti </a></li>
-     </ul>
-     <blockquote ng-repeat = "comentario in comentarios">
-
-       Estrellas  : {{comentario.estrellas}}<br/>
-       Comentario : {{comentario.texto}} <br/>
-       Usuario    : {{comentario.usuario}} <br/>
-       Seccion    : {{comentario.seccion}}<br/>
-      </blockquote>
-      <cite>Deja tu un comentario</cite>
+  <div class="col-md-4" ng-controller="Control">
 
 
 <!-- ***************************************************************************************-->
      <div class="panel" ng-show= "tab === 2" >
-       <form ng-controller="Control as control" ng-submint="control.agregarComentario()">
+       <form ng-controller="Control as control" >
          <h3 > Sineti	</h3>
          <div class="form-group">
              <label for="sel1">Evaluar</label>
-             <select class="form-control" ng-model="control.estrellasView">
+             <select class="form-control" ng-model="nuevoComentario.estrellas">
                <option>1 estrella</option>
                <option>2 estrellas</option>
                <option>3 estrellas</option>
@@ -215,12 +201,12 @@
             <br/>
          <div class="form-group">
  					<label for="comentario">			Comentario			</label>
- 					<input placeholder="Deja un comentario" class="form-control" type="text" ng-model="control.textoView">
+ 					<input placeholder="Deja un comentario" class="form-control" type="text" ng-model="nuevoComentario.texto">
           <label for="usuario">						Usuario 					</label>
-          <input class="form-control" placeholder="usuario@gmail.com" type="text" ng-model="control.usuarioView">
+          <input class="form-control" placeholder="usuario@gmail.com" type="text" ng-model="nuevoComentario.usuario">
  				</div><br/>
         <center>
-         <button type="submit" class="btn btn-default" >			Enviar			</button>
+         <button type="submit" class="btn btn-default" ng-click="agregarComentario()">			Comentar			</button>
       </center>
        </form>
      </div>
@@ -250,6 +236,23 @@
      </div>
 
    </section>
+
+
+   <h2 color = "green">Evaluacion </h2>
+   <section>
+    <ul class="nav nav-pills">
+      <li > <a href ng-click = "tab = 1"> Evalua la pagina </a> </li>
+      <li > <a href ng-click = "tab = 2"> Evalua a Sineti </a></li>
+    </ul>
+    <blockquote ng-repeat = "comentario in comentarios">
+
+      Estrellas  : {{comentario.estrellas}}<br/>
+      Comentario : {{comentario.texto}} <br/>
+      Usuario    : {{comentario.usuario}} <br/>
+     </blockquote>
+     <cite>Deja tu un comentario</cite>
+
+
 
   </div>
   <!-- Inicia renglon dos con cuatro columnas-->
@@ -295,7 +298,49 @@
        <h3> Ir a la seccion de ventjas en la barra principal </h3>
     </div>
     </center>
+    <center>
+        <div class="col-md-4" ng-controller="Control">
+    			<h2 color = "green">
+    				Comunicacion http
+    			</h2>
+
+         <section>
+           <ul class="nav nav-pills" >
+             <li > <a href ng-click = "tab = 1"> GET </a> </li>
+             <li > <a href ng-click = "tab = 2"> POST </a></li>
+           </ul>
+
+           <div class="panel" ng-show= "tab === 1" >
+             <ul>
+                <li ng-repeat="post in posts">
+                    {{post.title}}
+                    <p> : {{post.body}}</p>
+                </li>
+            </ul>
+      		</div>
+
+          <div class="panel" ng-show= "tab === 2">
+
+              <input class="form-control"  type="text" ng-model="nuevoPost.title">
+              <input class="form-control"  type="text" ng-model="nuevoPost.body">
+              <button type="submit" class="btn btn-default" ng-click="agergaPost()"> Enviar post </button>
+              <label> Una vez que lo envies ve a la seccion GET y revisa si esta tu post hasta abajo </label>
+         </div>
+
+        </center>
   	</div>
+    <div class="row">
+      <div class="col-md-6" ng-controller="Control">
+      <center>
+        <h2 color = "green">
+          Local storage
+        </h2>
+      </center>
+
+
+      </center>
+  </div>
+    </div>
     <!-- Acaba renglon dos con cuatro columnas-->
 
 </div>
