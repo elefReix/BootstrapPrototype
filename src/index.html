@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <!-- Referencia al archivo donde esta el codigo js del controlador -->
     <script src="Controllers/MainController.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
@@ -182,11 +183,24 @@
 <div class="row">
   <!-- inicia renglon dos con cuatro columnas -->
   <div class="col-md-4" ng-controller="Control">
+    <h2 color = "green">Evaluacion </h2>
+    <section>
 
+    <blockquote ng-repeat = "comentario in comentarios">
+
+      Estrellas  : {{comentario.estrellas}}<br/>
+      Comentario : {{comentario.texto}} <br/>
+      Usuario    : {{comentario.usuario}} <br/>
+     </blockquote>
+     <cite>Deja tu un comentario</cite>
+     <ul class="nav nav-pills">
+       <li > <a href ng-click = "tab = 1"> Grupo CFDI </a> </li>
+       <li > <a href ng-click = "tab = 2">  Sineti </a></li>
+     </ul>
 
 <!-- ***************************************************************************************-->
      <div class="panel" ng-show= "tab === 2" >
-       <form ng-controller="Control as control" >
+       <form >
          <h3 > Sineti	</h3>
          <div class="form-group">
              <label for="sel1">Evaluar</label>
@@ -211,49 +225,12 @@
        </form>
      </div>
 
-
-
-
      <div class="panel" ng-show= "tab === 1">
-       <form name="reviewSineti">
-         <h3 > Pagina </h3>
-         <select ng-model="estrellas">
-           <option value="1" >1 estrella</option>
-           <option value="2" >2 estrellas</option>
-           <option value="3" >3 estrellas</option>
-           <option value="4" >4 estrellas</option>
-           <option value="5" >5 estrellas</option>
-         </select> <br/>
-         <div class="form-group">
+         <p > Esta seccion no se encuentra disponible por el momento </p>
 
- 					<label for="comentario">Comentario</label>
- 					<input class="form-control" id="comentario" type="text" ng-model="texto">
- 				</div><br/>
-         <button type="submit" class="btn btn-default" ng-click="agregarComentario()">
- 					Enviar
- 				</button>
-       </form>
      </div>
 
    </section>
-
-
-   <h2 color = "green">Evaluacion </h2>
-   <section>
-    <ul class="nav nav-pills">
-      <li > <a href ng-click = "tab = 1"> Evalua la pagina </a> </li>
-      <li > <a href ng-click = "tab = 2"> Evalua a Sineti </a></li>
-    </ul>
-    <blockquote ng-repeat = "comentario in comentarios">
-
-      Estrellas  : {{comentario.estrellas}}<br/>
-      Comentario : {{comentario.texto}} <br/>
-      Usuario    : {{comentario.usuario}} <br/>
-     </blockquote>
-     <cite>Deja tu un comentario</cite>
-
-
-
   </div>
   <!-- Inicia renglon dos con cuatro columnas-->
   <center>
