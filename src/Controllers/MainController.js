@@ -35,14 +35,23 @@ angular.module('moduleApp', ["LocalStorageModule"])
             {estrellas : 3,texto : "Parece bien" , usuario : "usuarioNoRegistrado"}
         ];
     }
+
+    //ejemplo de watches y watchesCollection
+    // sirve para factorizar codigo que suele ser repetitvo dentro del controlador
+    $scope.$watchCollection('comentarios',function (newValue, oldValue){
+          localStorageService.set("angular-todoList",$scope.comentarios);
+    });
+
     $scope.nuevoComentario = {};
 
     $scope.agregarComentario = function() {
       $scope.comentarios.push($scope.nuevoComentario);
       $scope.nuevoComentario = {};
-      localStorageService.set("angular-todoList",$scope.comentarios);
-};
 
+};
+    $scope.limpiar = function(){
+     $scope.comentarios = [];
+    }
 
 })
 
