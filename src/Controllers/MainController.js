@@ -14,6 +14,7 @@ angular.module('moduleApp', ["LocalStorageModule"])
           .then(function(datos){
             $scope.posts = datos.data;
            }, function(error){
+              console.log(error);
            });
 
 
@@ -22,6 +23,7 @@ angular.module('moduleApp', ["LocalStorageModule"])
                  .then(function(datos){
                    $scope.repos = datos.data;
                   }, function(error){
+                    console.log(error);
                   });
 
     $scope.agergaPost = function () {
