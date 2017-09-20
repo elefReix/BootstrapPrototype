@@ -1,4 +1,15 @@
 angular.module('moduleApp', ['ngMessages','LocalStorageModule'])
+.directive('backImg', function(){
+    return function(scope,element,attrs){
+        attrs.$observe('backImg',function(value){
+            element.css({
+                "background":"url("+ value +")",
+                "background-size":"cover",
+                "background-position":"center"
+            });
+        });
+    }
+})
 .controller('Control', function ($scope,$http,localStorageService) {
 
     $scope.ejemploDigest = "Repositorios";

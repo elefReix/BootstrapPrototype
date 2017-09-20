@@ -18,6 +18,14 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular-messages.min.js"></script>
     <script type="text/javascript">$(function(){ $("body").hide().fadeIn(5000); });</script>
+    <style >
+      .circular{
+        border-radius :50%;
+        width : 100px;
+        height : 100px;
+        display : inline-block;
+      }
+    </style>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
@@ -257,11 +265,14 @@
         </center>
   	</div>
     <div class="row"> <!-- Informacion sobre el repositorio con http y digest -->
-              <div class="col-md-5" ng-controller="Control">
+              <div class="col-md-3" ng-controller="Control" >
                   <center>
                       <h2 color = "green" >Mi avatar </h2>
-                        <img src="{{repos[0].owner.avatar_url}}">
                   </center>
+                  <div class="circular" back-img= "{{repos[0].owner.avatar_url}}"></div>
+                  En esta parte se creo una directiva customizada para hacer circular
+                  el avatar que es recuperado via get desde mi repositorio personal
+                  en gitHub
               </div>
               <div class="col-md-2" ng-controller="Control">
                   <center>
@@ -283,7 +294,7 @@
 
             -->
             </div><!-- FORMULARIO CON VALIDACIONES -->
-            <div class="col-md-4" ng-controller="Control">
+            <div class="col-md-6" ng-controller="Control">
                 <center><h2 color = "green" > Registrate</h2></center>
                 <form role="form" name="fomularioValidaciones">
               				 	<center>
