@@ -1,4 +1,4 @@
-angular.module('moduleApp', ["LocalStorageModule"])
+angular.module('moduleApp', ['ngMessages','LocalStorageModule'])
 .controller('Control', function ($scope,$http,localStorageService) {
 
     $scope.ejemploDigest = "Repositorios";

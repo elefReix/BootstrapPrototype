@@ -8,6 +8,7 @@
     <script src="Controllers/MainController.js"></script>
     <script src="js/angular-local-storage.min.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
     <script type="text/javascript">$(function(){ $("body").hide().fadeIn(5000); });</script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -266,41 +267,52 @@
                       </li>
                     </ul>
                   </center>
-              <!-- Informacion sobre el repositorio con http y digest -->
+              <!-- Informacion sobre el repositorio con http y digest
+
+              <div ng-messages="exampleForm.userLastName.$error">
+  <div ng-message="required">This field is required</div>
+</div>
+
+            -->
             </div><!-- FORMULARIO CON VALIDACIONES -->
             <div class="col-md-4" ng-controller="Control">
-                <center><h2 color = "green" > Formulario con validaciones</h2></center>
+                <center><h2 color = "green" > Registrate</h2></center>
                 <form role="form" name="fomularioValidaciones">
-              				<div class="form-group">
-                    					<center><label for="nombre">Nombre 		</label><center>
-                      					<input class="form-control" name="nombreForm" placeholder="Julieta" required>
-              				</div>
-              				<div class="form-group">
-                    					<center><label for="apellido">Apellidos		</label><center>
-                    					<input class="form-control" name="apellidoForm" placeholder="Vazquez Godoy" required>
-              				</div>
-              				<div class="form-group">
+              				 	<center>
+                              <label for="nombre">Nombre 		</label>
+                    					<input class="form-control" name="nombreForm" placeholder="Julieta" ng-model="nombreF" required>
+                              <div ng-messages="fomularioValidaciones.nombreForm.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                              </div>
+                              <br/>
+
+                    					<label for="apellido">Apellidos		</label>
+                    					<input class="form-control" name="apellidoForm" placeholder="Vazquez Godoy"  ng-model="apellidoF" required>
+                              <div ng-messages="fomularioValidaciones.apellidoForm.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                              </div>
+                              <br/>
+
                               <!--<label for="exampleInputFile">File input</label><input id="exampleInputFile" type="file">-->
-                              <center><label for="mail">Correo electronico		</label><center>
-                    					<input class="form-control" name="mailForm" placeholder="julieta@gmail.com"required>
-              				</div>
-                      <div class="form-group">
-                    					<center><label for="telefono">Telefono		</label><center>
-                    					<input class="form-control" name="telefonoForm" placeholder="5534231239" required>
-              				</div>
-              				<div class="form-group">
-                    					<center><label for="CURP">CURP		</label><center>
-                    					<input class="form-control" name="curpForm" placeholder="VAGJ230198HZLBC00" required>
-              				</div>
-              				<div class="form-group">
-                              <!--<label for="exampleInputFile">File input</label><input id="exampleInputFile" type="file">-->
-                              <center><label for="RFC">RFC		</label><center>
-                    					<input class="form-control" name="rfcForm" placeholder="LSKDFL49854LSKDM" required>
-              				</div>
-                      <center>
+                              <label for="mail">Correo electronico		</label>
+                    					<input class="form-control" name="mailForm" placeholder="julieta@gmail.com" ng-model="mailF" required>
+                              <div ng-messages="fomularioValidaciones.mailForm.$error">
+                              <div ng-message="required">Este campo es requerido</div>
+                                <div ng-message="email">La direccion de correo es invalida</div>
+                              </div>
+                              <br/>
+
+                    					<label for="telefono">Telefono		</label>
+                    					<input class="form-control" name="telefonoForm" placeholder="5534231239" ng-model="telefonoF" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+                              <div ng-messages="fomularioValidaciones.telefonoForm.$error">
+                              <div ng-message="required">Este campo es requerido</div>
+                                <div ng-message="pattern">El telefono debe contar con 10 dígitos máximo</div>
+                              </div>
+                              <br/>
+
                     				<button type="submit" class="btn btn-default" ng-mouseover= "bandera = true" ng-mouseout = "bandera = false">
                     					Login
-                    				</button> <span ng-show = "bandera"> Logeate</span>
+                    				</button> <span ng-show = "bandera"> { * * }</span>
                       </center>
           			</form>
           </div>
